@@ -2,24 +2,45 @@ import React, { Component } from 'react';
 
 class App extends Component {
 
-  render() {
-    return (
+  render(){
+
+    return(
+
       <div className='container'>
-        <textarea className="create-todo-text">I want to..</textarea>
-        <select className="create-todo-priority">
-          <option value="1"></option>
-        </select>
+        <div class= "grid">
+          <div className= "panel-body left">
+            <div class="label-bar"><h3>To do List</h3></div>
 
-        <a className="edit-todo"></a>
+            <textarea className="create-todo-text container"> I want to..</textarea>
+            <ul id ="list">
+    
 
-        <a className="delete-todo"></a>
+            </ul>
+            
 
-        <textarea className="update-todo-text"></textarea>
+            <select className="create-todo-priority">
+              <option value="1">Priority List</option>
+            </select>
+            
+          </div>
 
-        <select className="update-todo-priority"></select>
+          <button  type="button" class= "btn btn-primary btn-success">+ Add Button</button>
 
-        <button className= "update-todo"></button>
+          <div className= "panel-body container">
 
+            <a className="edit-todo">Edits todo</a>
+            <a className="delete-todo">Deletes todo</a>
+
+            <textarea className="update-todo-text">New updates to do text</textarea>
+
+            <select className="update-todo-priority">Update Priority</select>
+
+            <button className= "update-todo">updates todo</button> 
+
+
+          </div>
+
+        </div>
       </div>
     );
   }
