@@ -4,11 +4,11 @@
   "description": "REACT100 Assignment - VSTDA",
   "main": "server/index.js",
   "scripts": {
-    "build": "npm run less && webpack",
-    "start": "node server/index.js",
-    "less": "lessc src/css/style.less dist/css/style.css",
+    "start": "parcel public/index.html --open",
+    "build": "npx parcel build public/index.html --no-source-maps",
     "lint": "eslint .",
-    "test": "npm run build && mocha test/.setup.js test/*.spec.js --exit"
+    "test": "mocha test/*.spec.js --exit"
+    
   },
   "dependencies": {
     "axios": "^0.16.1",
@@ -29,11 +29,6 @@
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.6.1",
-    "babel": "^6.3.26",
-    "babel-loader": "^7.1.1",
-    "babel-preset-airbnb": "^1.0.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-register": "^6.4.3",
     "chai-as-promised": "^5.3.0",
     "chai-http": "^4.2.0",
     "csx": "^4.0.0",
