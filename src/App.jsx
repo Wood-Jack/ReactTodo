@@ -1,7 +1,8 @@
 
 import React, { Component } from 'react';
+import AddTodo, from './AddTodo';
 
-class App extends React.Component {
+class App extends React.Component{
 
   constructor(props){
 
@@ -11,6 +12,8 @@ class App extends React.Component {
 
     
   }
+
+  
   
  
   render(){
@@ -18,7 +21,6 @@ class App extends React.Component {
     return(
       
       <div className='container d-flex justify-content-center mt-5'>
-        
           <div className= "panel-body " id="pbody1">
             <div class="label-bar " id="label"><h3>Add New Todo</h3></div>
 
