@@ -5,19 +5,22 @@ class AddTodo extends React.Component{
     constructor(props){
 
         super(props);
-        this.state= {list:[note:'']};
+        this.state= {list:[note: '']};
+
         this.noteAddedChange = this.noteAddedChange.bind(this);
         this.listAddedChange = this.listAddedChange.bind(this);
 
     }
 
-    this.state={list:[note:'']};
+
 
     noteAddedChange(e){
-        this.setState({note:e.target.value});
+
+        this.setState({note: e.target.value});
     }
 
     listAddedChange(e){
+
         this.setState({list: e.target.value});
     }
 
@@ -31,22 +34,31 @@ class AddTodo extends React.Component{
 
 
 
-    render(){
+    render() {
+
         return(
 
-            <label>Note Description:<input type= "text" onChange={e =>this.noteAddedChange(e.target.value)}> </label>
+            <div className='container'>
+
+            
+            <span>Note Description:<input type= "text" onChange={e =>this.noteAddedChange(e.target.value)}></input>
+            </span>
+            
             <p>
-                <button onClick={this.addNotes}>Add Note </button>;
+                <button onClick={this.addNotes}>Add Note </button>
             </p>
 
-            <label>ListDescription:<input type= "text" onChange={e => this.listAddedChange(e.target.value)}></label>
-            <p>
-                <button onClick={this.addList}>Add List</button>;
-            <p>
+            <span>ListDescription:<input type= "text" onChange={e => this.listAddedChange(e.target.value)}></input>
+            </span>
 
+            <p>
+                <button onClick={this.addList}>Add List</button>
+            </p>
+            </div>
 
-        )
+        );
     }
 
-
 }
+
+export default AddTodo;
