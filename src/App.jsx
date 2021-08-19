@@ -8,12 +8,10 @@ class App extends React.Component{
   constructor(props){
 
     super(props);
-    this.state= {listNote:[], notes: ' ' , priority:'' };
+    this.state= {listNote:[], notes: this.props.note , priority: this.props.priority };
     this.addNoteArr = this.addNoteArr.bind(this);
     this.deleteListArr = this.deleteListArr.bind(this);
-
     this.handleCallBack = this.handleCallBack.bind(this);
-    
      
   }
 
@@ -24,7 +22,7 @@ class App extends React.Component{
 
   }
   
-  //creating a previous state to update the array of notes in the app.
+  //update the array of notes in the app.
   addNoteArr(){
 
     let newListNote ={ listNote: this.state.listNote};
@@ -43,15 +41,14 @@ class App extends React.Component{
   //updates the todo list itself
   updateTodoList(){
 
-    const newTodo = {notes: this.state.notes, priority:this.state.priority   
-    }
-
+    const newTodo = {notes: this.state.notes, priority:this.state.priority };
     this.setState((prevState) =>{const newToDos = prevState.listNote;
     newToDos.push(newTodo);
-  return{
-    listNote:newToDos
-  };
+
+  return { listNote: newToDos};
+
   }, () => console.log(this.state.listNote));
+
   }
   
 
@@ -65,8 +62,8 @@ class App extends React.Component{
         <div className="col-8"> <AddTodo addNoteArr = {this.addNoteArr}/> </div>
 
         
-        <TodoList parentCallback={this.handleCallBack}
-        addNoteArr = {this.addNoteArr} updateTodoList ={this.updateTodoList}/>
+        <TodoList parentCallback={this.handleCallBack} deleteListArr={this.deleteListArr}
+        addNoteArr = {this.addNoteArr} updateTodoList ={this.updateTodoList}/> 
         
 
       </div>

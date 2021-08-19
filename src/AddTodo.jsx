@@ -6,7 +6,7 @@ class AddTodo extends React.Component{
     constructor(props){
 
         super(props);
-        this.state= {note:[], priority: ''};
+        this.state= {note:'', priority: ''};
         this.noteChange = this.noteChange.bind(this);
         this.priorityChange= this.priorityChange.bind(this);
         this.addNotes = this.addNotes.bind(this);
@@ -15,7 +15,6 @@ class AddTodo extends React.Component{
 
     // use to edit the notes description
     noteChange(e){
-
         this.setState({note: e.target.value});
     }
     
@@ -34,9 +33,7 @@ class AddTodo extends React.Component{
 
         let addNote= {note: this.state.note , priority: this.state.priority};
 
-        this.props.updateListArr(addNote);
-        
-
+        this.props.addNoteArr(addNote);
     
     } 
 
@@ -45,9 +42,7 @@ class AddTodo extends React.Component{
         //creating a mapping of the list to show how many in the list
         //var listing = this.state.list.map( it => <li key={it.list}>{it.list}</li>);
 
-
         return(
-           
  
         <div className='d-flex mt-5'>
           <div className= "panel-body" id= "pbody1">
@@ -72,9 +67,6 @@ class AddTodo extends React.Component{
 
         </div>
 
-
-            
-     
 
         );
     }
