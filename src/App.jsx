@@ -8,7 +8,7 @@ class App extends React.Component{
   constructor(props){
 
     super(props);
-    this.state= {listNote:[], notes: this.props.note , priority: this.props.priority };
+    this.state= {listNote:[], notes: this.props.note , priority: this.props.priority , key: this.props.key };
     this.addNoteArr = this.addNoteArr.bind(this);
     this.deleteListArr = this.deleteListArr.bind(this);
     this.handleCallBack = this.handleCallBack.bind(this);
@@ -18,7 +18,7 @@ class App extends React.Component{
   //using this function I gain access from the child then able to go to parent class.
   handleCallBack =  (addTodoData) =>{
 
-    this.setState({notes: addTodoData.notes , priority: addTodoData.priority});
+    this.setState({notes: addTodoData.notes , priority: addTodoData.priority, key: addTodoData.key});
 
   }
   
@@ -43,11 +43,11 @@ class App extends React.Component{
   //updates the todo list itself
   updateTodoList(){
 
-    const newTodo = {notes: this.state.notes, priority:this.state.priority };
+    const newTodo = {notes: this.state.notes, priority:this.state.priority , key:this.state.key };
     this.setState((prevState) =>{const newToDos = prevState.listNote;
     newToDos.push(newTodo);
 
-  return { listNote: newToDos};
+  return { listNote: newTodo};
 
   }, () => console.log(this.state.listNote));
 
@@ -55,6 +55,7 @@ class App extends React.Component{
   
 
   render(){
+
 
     return(
     <div className= "container">
@@ -65,7 +66,10 @@ class App extends React.Component{
 
         
         <TodoList parentCallback={this.handleCallBack} deleteListArr={this.deleteListArr}
+        listNote={this.state.listNote}
         addNoteArr = {this.addNoteArr} updateTodoList ={this.updateTodoList}/> 
+
+
         
 
       </div>

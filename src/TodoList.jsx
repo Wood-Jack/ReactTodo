@@ -45,21 +45,33 @@ class TodoList extends React.Component{
 
     render(){
 
+        console.log(this.props.listNote);
+        
         return(
 
         <div className = "d-flex row  mt-5">
             <div className= "justify-content-center h-60 w-90 " id="pbody2">
-                <div class= "label-bar" id="label" ><h3>View Todos</h3></div>
+                <div className= "label-bar" id="label" ><h3>View Todos</h3></div>
                 <p className= "pt-4 mb-1">Description</p>
-                <textarea className= "update-todo-text container" onChange={this.noteChange} >New updates to do text</textarea>
+                <textarea className= "update-todo-text container" onChange={this.noteChange} value={this.state.note}>New updates to do text</textarea>
             
                 <div className= "container-fluid" id="bttm-bar">
                       
-
                 <row className= "d-flex justify-content-end">
-                    <h5>{this.state.note}</h5>
+                   
                 <a className= "edit-todo " ><i className="far fa-edit" onClick={this.handleClick} ></i> </a>
                 <a className= "delete-todo ml-1" ><i className="far fa-trash-alt"></i> </a></row>
+                <ul className= "list-group list-group-flush list-unstyled">
+                    {this.props.listNote.map(todo =>(
+
+                       <div className="label">{todo}</div>       
+
+                    ))}
+
+
+
+                    
+                </ul>
  
                 <p className= "pt-4 mb-1">Priority</p> 
                 <select className= "update-todo-priority " onChange = {this.priorityChange}
