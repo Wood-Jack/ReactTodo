@@ -16,17 +16,19 @@ class App extends React.Component{
   }
 
   //using this function I gain access from the child then able to go to parent class.
-  handleCallBack =(addTodoData) =>{
+  handleCallBack =  (addTodoData) =>{
 
     this.setState({notes: addTodoData.notes , priority: addTodoData.priority});
 
   }
   
   //update the array of notes in the app.
-  addNoteArr(){
+  addNoteArr(newNote){
 
-    let newListNote ={ listNote: this.state.listNote};
-    this.setState({listNote:[...this.state.listNote, newListNote]});
+    this.state.listNote.push(newNote);
+    this.setState({ listNote: this.state.listNote});
+
+    console.log(this.state.listNote)
 
   }
   
