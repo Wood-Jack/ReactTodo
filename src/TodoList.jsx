@@ -58,21 +58,23 @@ class TodoList extends React.Component{
                 <div className= "container-fluid" id="bttm-bar">
                       
                 <row className= "d-flex justify-content-end">
-                   
-                <a className= "edit-todo " ><i className="far fa-edit" onClick={this.handleClick} ></i> </a>
-                <a className= "delete-todo ml-1" ><i className="far fa-trash-alt"></i> </a></row>
                 <ul className= "list-group list-group-flush list-unstyled">
-                    {this.props.listNote.map(todo =>(
+                    {this.props.listNote.map(todo => {
 
-                       <div className="label">{todo}</div>       
+                       return(
+                           <li key= {todo.key}>
+                               {todo.note}
+                           </li>
+                       )
 
-                    ))}
-
-
-
+                       })}
                     
                 </ul>
- 
+                   
+                <a className= "edit-todo " ><i className="far fa-edit" onClick={this.handleClick} ></i> </a>
+                <a className= "delete-todo ml-1" ><i className="far fa-trash-alt"></i></a>
+                
+                </row>
                 <p className= "pt-4 mb-1">Priority</p> 
                 <select className= "update-todo-priority " onChange = {this.priorityChange}
                     >
