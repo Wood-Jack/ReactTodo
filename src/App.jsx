@@ -8,22 +8,24 @@ class App extends React.Component{
   constructor(props){
 
     super(props);
-    this.state= {listNote:[], notes: this.props.note , priority: this.props.priority , key: this.props.key };
+    this.state= {listNote:[]};
     this.addNoteArr = this.addNoteArr.bind(this);
     this.deleteListArr = this.deleteListArr.bind(this);
     this.handleCallBack = this.handleCallBack.bind(this);
-     
+    this.editing= this.editing.bind(this);
+    this.updateTodoList= this.updateTodoList.bind(this);
+
   }
 
   //using this function I gain access from the child then able to go to parent class.
   handleCallBack =  (addTodoData) =>{
 
-    this.setState({notes: addTodoData.notes , priority: addTodoData.priority, key: addTodoData.key});
+    this.setState({notes: addTodoData.notes , priority: addTodoData.priority, num: addTodoData.num});
 
   }
   
   //update the array of notes in the app.
-  addNoteArr(newNote){
+  addNoteArr(newNote) {
 
     this.state.listNote.push(newNote);
     this.setState({ listNote: this.state.listNote});
@@ -33,26 +35,46 @@ class App extends React.Component{
   }
   
   //deletes item in the listed array
-  deleteListArr(e){
+  deleteListArr(num){
 
-    let filteredArray= this.state.listNote.filter(item => item !== e.target.value);
-    this.setState({listNote:filteredArray});
+    this.setState({listNote: [...this.state.listNote.filter(todoNotes => todoNotes.num !== num)]});
 
   }
   
   //updates the todo list itself
-  updateTodoList(){
+  updateTodoList(notes,priority,num) {
 
-    const newTodo = {notes: this.state.notes, priority:this.state.priority , key:this.state.key };
-    this.setState((prevState) =>{const newToDos = prevState.listNote;
-    newToDos.push(newTodo);
+    this.setState(prevState => {
 
-  return { listNote: newTodo};
+      prevState.listNote.map(todos => {
 
-  }, () => console.log(this.state.listNote));
+        if(num === todos.num) {
+
+          todos.notes = notes
+          todos.priority= priority
+          todos.beingEdited = !todos.beingEdited;
+
+        }
+
+        return todos
+
+      });
+    });
 
   }
   
+  editing(num){
+
+    this.setState(prevState => {
+      prevState.listNote.map(todos => {
+        if(num === todos.num){
+          todos.beingEdited = !todos.beingEdited;
+        }
+
+        return todos;
+      });
+    });
+  };
 
   render(){
 
@@ -66,10 +88,8 @@ class App extends React.Component{
 
         
         <TodoList parentCallback={this.handleCallBack} deleteListArr={this.deleteListArr}
-        listNote={this.state.listNote}
+        listNote={this.state.listNote} editing={this.editing}
         addNoteArr = {this.addNoteArr} updateTodoList ={this.updateTodoList}/> 
-
-
         
 
       </div>

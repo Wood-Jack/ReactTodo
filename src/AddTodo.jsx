@@ -6,17 +6,18 @@ class AddTodo extends React.Component{
     constructor(props){
 
         super(props);
-        this.state= {note:'', priority: '3' , key: 0};
+        this.state= {note:'', priority: '3' , num: 0};
         this.noteChange= this.noteChange.bind(this);
         this.priorityChange= this.priorityChange.bind(this);
         this.addNotes = this.addNotes.bind(this);
 
     }
-
     
     // use to edit the notes description
     noteChange(e){
+
         this.setState({note: e.target.value});
+
     }
     
     
@@ -31,9 +32,9 @@ class AddTodo extends React.Component{
     // Add notes to the list of  that that takes in the note and adds it to the list
     addNotes(){
 
-        let addNote= {note: this.state.note , priority: this.state.priority , key: this.state.key};
+        let addNote= {note: this.state.note , priority: this.state.priority , num: this.state.num};
 
-        this.setState({key: this.state.key + 1});
+        this.setState({num: this.state.num + 1});
 
         this.props.addNoteArr(addNote);
     

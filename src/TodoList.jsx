@@ -13,12 +13,34 @@ class TodoList extends React.Component{
     constructor(props){
 
         super(props);
-        this.state= {note: '', priority: '' };
+        this.state= {note: '', priority: '' , num: 0};
+
         this.noteChange = this.noteChange.bind(this);
         this.priorityChange= this.priorityChange.bind(this);
         this.handleClick= this.handleClick.bind(this);
+        this.deleteClick= this.deleteClick.bind(this);
+        this.priorityColor= this.priorityColor.bind(this);
+        this.handleEdit= this.handleEdit.bind(this);
 
     }
+
+    priorityColor(priority){ 
+
+        if (priority === '1'){
+            return "list-group-item-success" ; 
+        }
+        else if (priority === '2') {
+            return "list-group-item-warning";
+          } else if (priority === '3') {
+            return "list-group-item-danger";
+          }
+
+    }
+
+    handleEdit(){
+        this.props.editing(this.props.num);
+    }
+  
 
     
     // use to edit the list description
@@ -33,20 +55,23 @@ class TodoList extends React.Component{
         this.setState({priority: e.target.value});
 
     }
-
+    // updates the todolist array full of notes 
     handleClick()
     {
-        this.props.updateTodoList(this.state.note, this.state.priority);
+        this.props.updateTodoList(this.state.note, this.state.priority, this.state.num);
         
     }
 
+    //delete click to delete the note
 
+    deleteClick()
+    {
+        this.props.deleteListArr(this.props.num);
+    }
   
 
     render(){
-
-        console.log(this.props.listNote);
-        
+       
         return(
 
         <div className = "d-flex row  mt-5">
@@ -58,12 +83,13 @@ class TodoList extends React.Component{
                 <div className= "container-fluid" id="bttm-bar">
                       
                 <row className= "d-flex justify-content-end">
-                <ul className= "list-group list-group-flush list-unstyled">
+                <ul className= "list-group list-group-flush list-unstyled"   >
                     {this.props.listNote.map(todo => {
 
                        return(
-                           <li key= {todo.key}>
-                               {todo.note}
+                           <li className={this.priorityColor(this.props.priority)} key= {todo.num}>
+                               {todo.note}   <a className= "edit-todo " onClick={this.handleEdit}> <i className="far fa-edit"></i> </a>
+                <a className= "delete-todo ml-1" onClick={this.deleteClick}><i className="far fa-trash-alt" ></i></a>
                            </li>
                        )
 
@@ -71,8 +97,7 @@ class TodoList extends React.Component{
                     
                 </ul>
                    
-                <a className= "edit-todo " ><i className="far fa-edit" onClick={this.handleClick} ></i> </a>
-                <a className= "delete-todo ml-1" ><i className="far fa-trash-alt"></i></a>
+              
                 
                 </row>
                 <p className= "pt-4 mb-1">Priority</p> 
