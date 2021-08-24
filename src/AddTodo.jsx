@@ -34,9 +34,12 @@ class AddTodo extends React.Component{
 
         let addNote= {note: this.state.note , priority: this.state.priority , num: this.state.num};
 
-        this.setState({num: this.state.num + 1});
+        this.setState({num: this.state.num + 1} );
 
         this.props.addNoteArr(addNote);
+
+        
+    
     
     } 
 
