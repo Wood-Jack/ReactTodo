@@ -32,15 +32,17 @@ class AddTodo extends React.Component{
     // Add notes to the list of  that that takes in the note and adds it to the list
     addNotes(){
 
-        let addNote= {note: this.state.note , priority: this.state.priority , num: this.state.num};
+        let addNote= {note: this.state.note , 
+            priority: this.state.priority , 
+            num: this.state.num,
+            complete:false,
+            beingEdited: false
+        };
 
         this.setState({num: this.state.num + 1} );
 
         this.props.addNoteArr(addNote);
 
-        
-    
-    
     } 
 
     render() {

@@ -1,15 +1,15 @@
 
 import React, { Component } from 'react';
 import AddTodo from './AddTodo';
-import TodoList from './TodoListViewer';
-import Object from './Object';
+import TodoListViewer from './TodoListViewer';
+
 
 class App extends React.Component{
 
   constructor(props){
 
     super(props);
-    this.state= {listNote: [],};
+    this.state= {listNote: []};
     this.addNoteArr = this.addNoteArr.bind(this);
     this.deleteListArr = this.deleteListArr.bind(this);
     //this.handleCallBack = this.handleCallBack.bind(this);
@@ -44,11 +44,7 @@ class App extends React.Component{
   
   //deletes item in the listed array
   deleteListArr(num){
-
-    this.setState({ itemArr: [...this.state.itemArr.filter(todo => todo.num !== num)] });
-    
-    
-
+    this.setState({ listNote: [...this.state.listNote.filter(todo => todo.num !== num)] });
   }
   
   //updates the todo list itself
@@ -60,14 +56,13 @@ class App extends React.Component{
 
         if(num === todos.num) {
 
-          todos.notes = notes
+          todos.notes = notes;
           todos.priority= priority
-          todos.beingEdited = !todos.beingEdited;
+          todos.beingEdited = !todos.beingEdited
 
         }
 
-        return todos
-
+        return todos ;
       });
     });
 
@@ -91,7 +86,7 @@ class App extends React.Component{
       prevState.listNote.map(todos => {
       if (num === todos.num)
       {
-        todos.completed = !todos.completed;
+        todos.complete = !todos.complete;
       }
       return todos;
       });
