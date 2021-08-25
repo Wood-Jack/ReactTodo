@@ -8,13 +8,13 @@ class Object extends React.Component{
         super(props);
         this.state={
             complete: false ,
-            beingEdited:false
+            beingEdited:false 
         };
 
         this.handleDelete= this.handleDelete.bind(this);
         this.handleEdit= this.handleEdit.bind(this);
         this.handleCompleted= this.handleCompleted.bind(this);
-
+        this.priotityColor=this.priorityColor.bind(this);
     }
 
     handleEdit(){
@@ -55,9 +55,9 @@ class Object extends React.Component{
             
                 {!this.props.beingEdited ? ( <li className= {this.priorityColor(this.props.priority)}>
 
-                 <button type= "checkbox" onClick={this.handleCompleted}/>  
+                 <button type= "checkbox" id= "checker" onClick={this.handleCompleted} />  
 
-                 {!this.props.completedTodo ? ( 
+                 {!this.props.complete ? ( 
                      <span>{this.props.note}</span>
                  ) : (
                      <s>{this.props.note}</s>

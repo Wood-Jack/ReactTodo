@@ -48,15 +48,14 @@ class App extends React.Component{
   }
   
   //updates the todo list itself
-  updateTodoList(notes,priority,num) {
+  updateTodoList(note,priority,num) {
 
     this.setState(prevState => {
-
       prevState.listNote.map(todos => {
 
         if(num === todos.num) {
 
-          todos.notes = notes;
+          todos.note = note;
           todos.priority= priority
           todos.beingEdited = !todos.beingEdited
 

@@ -5,24 +5,37 @@ class Editor extends Component{
 
 
     constructor(props) {
+
+        super(props);
         this.state = {
+           
             note: '',
-            priority: '3',
+            priority: '3'
         };
         
 
-        this.handleChange = this.handleChange.bind(this);
+    
         this.handleClick= this.handleClick.bind(this);
-    }
-
-    handleChange(event){
-        this.setState({ [event.target.name]: event.target.value });
+        this.priorityChange = this.priorityChange.bind(this);
+        this.noteChange =this.noteChange.bind(this);
     }
 
     handleClick(){
 
-        this.props.updateTodoList(this.state.note, this.state.priority, this.state.num);
-        
+        this.props.updateTodoList(this.state.note, this.state.priority, this.props.num);
+
+    }
+
+    noteChange(e){
+
+        this.setState({note: e.target.value});
+
+    }
+    
+    
+    priorityChange(e){
+
+        this.setState({priority: e.target.value});
     }
 
 
@@ -39,7 +52,7 @@ class Editor extends Component{
               <p className="pt-4 mb-1">Description</p>
               <textarea
                 className="update-todo-text container"
-                onChange={this.handleChange}
+                onChange={this.noteChange}
                 value={this.state.note}
               >
                 New updates to do text
@@ -50,7 +63,7 @@ class Editor extends Component{
               <p className="pt-4 mb-1">Priority</p>
                 <select
                   className="update-todo-priority "
-                  onChange={this.handleChange}
+                  onChange={this.priorityChange}
                 >
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -73,3 +86,5 @@ class Editor extends Component{
     
     
 }
+
+export default Editor;

@@ -52,9 +52,10 @@ class AddTodo extends React.Component{
 
         return( 
  
-        <div className='d-flex mt-5'>
-          <div className= "panel-body" id= "pbody1">
-            <div className= "label-bar" id="label"><h3>Add New Todo</h3></div>
+        <div className='h-100 col-lg-4'>
+          <div className= "card" id= "pbody1">
+            <div className= "card-header" id="label">Add New Todo</div>
+            <div className="card-body">
 
             <p className="pt-4 mb-1">I want too..</p>
             <textarea className= "create-todo-text container" onChange={this.noteChange} value= {this.state.note} ></textarea>
@@ -66,11 +67,12 @@ class AddTodo extends React.Component{
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
+            </div>
             
 
-            <footer id="bottom">
+            <div className="card card-footer" >
             <button  type="button" className= "btn btn-primary btn-success" onClick= {this.addNotes}>Add</button>
-            </footer>  
+            </div>  
           </div>
 
         </div>
