@@ -23,8 +23,8 @@
     "nightmare-react-utils": "^1.0.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "serve-favicon": "^2.5.0",
-    "webpack": "^3.6.0"
+    "serve-favicon": "^2.5.0"
+   
   },
   "devDependencies": {
     "@parcel/transformer-less": "^2.0.0-rc.0",
