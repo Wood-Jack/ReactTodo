@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <link rel="stylesheet" href="bc730d72f3e9728063f6f7baca601c22">
+  <title>VSTDA</title>
+  <script src="9002d2d88b32a0777daaf54d1f2bb767" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="0c5b2b7571a3d86e5ac4395ff4a68edb" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="4bce6a4b1f9e3d6f1ff9fe1efe83be58" type="module"></script> 
+</body> 
+</html> 
